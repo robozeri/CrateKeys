@@ -1,0 +1,15 @@
+##CrateKeys Config By SavionLegendZzz##
+---
+Crate: 19
+#crate keys block(use ids please)
+CrateKey-Item: 341
+#cratekey item
+failed: "You Need A Crate Key Too Open The Crate!"
+#cratekey failed message
+completed: "Items Added Into Your Inventroy!"
+ID-1: 0
+ID-2: 255
+#The Items Go From 0 To 255 By ID
+number-of-items: 1
+#how many of a certain item u get
+...
