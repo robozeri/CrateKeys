@@ -19,8 +19,8 @@ class Main extends PluginBase implements Listener
              	file_put_contents($this->getDataFolder() . "config.yml",$this->getResource("config.yml"));
         }
         $this->getServer()->getPluginManager()->registerEvents($this,$this);
-        $this->getServer()->getLogger()->info("[CrateKeys] Plugin has been enabled!");
-        $this->getServer()->getLogger()->info("[CrateKeys] Created by SavionLegendZzz.");
+        $this->getLogger()->info(TextFormat::YELLOW . "[" . TextFormat::GOLD . "CrateKeys" . TextFormat::YELLOW. "] " . TextFormat::GREEN . "Plugin has been enabled!");
+	$this->getLogger()->info(TextFormat::YELLOW . "[" . TextFormat::GOLD . "CrateKeys" . TextFormat::YELLOW. "] " . TextFormat::GREEN . "Created by " . TextFormat::WHITE . "SavionLegendZzz");
     }
 
     public function crateKeys(PlayerInteractEvent $event) {
