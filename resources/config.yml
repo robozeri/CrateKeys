@@ -6,10 +6,12 @@ Crate: 19
 CrateKey-Item: 341
 # CrateKey item
 
-failed: "You Need A Crate Key Too Open The Crate!"
+failed: "You need a crate key to open the crate."
 # CrateKey failed message
 
-completed: "Items Added Into Your Inventroy!"
+completed: "Items were added to your inventory!"
+# CrateKey completed message
+
 ID-1: 0
 ID-2: 255
 # The items go from 0 to 255 by ID.
