@@ -14,36 +14,35 @@ class Main extends PluginBase implements Listener
 {
     
     public function onEnable() {
-		
-		if(!file_exists($this->getDataFolder() . "config.yml")) {
-            @mkdir($this->getDataFolder());
-             file_put_contents($this->getDataFolder() . "config.yml",$this->getResource("config.yml"));
+	if(!file_exists($this->getDataFolder() . "config.yml")) {
+        	@mkdir($this->getDataFolder());
+             	file_put_contents($this->getDataFolder() . "config.yml",$this->getResource("config.yml"));
         }
-        		$this->getServer()->getPluginManager()->registerEvents($this,$this);
-        		$this->getServer()->getLogger()->info("[CrateKeys]Plugin Enabled By SavionLegendZzz");
-        }
-
-public function crateKeys(PlayerInteractEvent $event) {
- $player = $event->getPlayer();
-    $block = $event->getBlock();
-    if($block->getId() == $this->getConfig()->get("Crate") && !$event->isCancelled()) {
-        if($player->getInventory()->getItemInHand()->getId() == $this->getConfig()->get("CrateKey-Item")) {
-            $prizes = array((Item::get(rand($this->getConfig()->get("ID-1"), $this->getConfig()->get("ID-2")), 0, $this->getConfig()->get("number-of-items"))));
-
-foreach($prizes as $prize){ 
- $player->getInventory()->addItem($prize);
-}
-$player->sendMessage($this->getConfig()->get("completed"));
-            $player->getInventory()->removeItem(item::get($this->getConfig()->get("CrateKey-Item") , 0, 1));
-            $event->setCancelled(true);
-        }
-        else {
-            $player->sendMessage($this->getConfig()->get("failed"));
-            $event->setCancelled(true); 
-        }
+        $this->getServer()->getPluginManager()->registerEvents($this,$this);
+        $this->getLogger()->info(TextFormat::YELLOW . "[" . TextFormat::GOLD . "CrateKeys" . TextFormat::YELLOW. "] " . TextFormat::GREEN . "Plugin has been enabled!");
+	$this->getLogger()->info(TextFormat::YELLOW . "[" . TextFormat::GOLD . "CrateKeys" . TextFormat::YELLOW. "] " . TextFormat::GREEN . "Created by " . TextFormat::WHITE . "SavionLegendZzz");
     }
-    elseif(!$event->isCancelled()) {
-        $event->setCancelled(false);
+
+    public function crateKeys(PlayerInteractEvent $event) {
+ 	$player = $event->getPlayer();
+    	$block = $event->getBlock();
+	 if($block->getId() == $this->getConfig()->get("Crate") && !$event->isCancelled()) {
+        	if($player->getInventory()->getItemInHand()->getId() == $this->getConfig()->get("CrateKey-Item")) {
+            		$prizes = array((Item::get(rand($this->getConfig()->get("ID-1"), $this->getConfig()->get("ID-2")), 0, $this->getConfig()->get("number-of-items"))));
+			foreach($prizes as $prize){ 
+ 				$player->getInventory()->addItem($prize);
+			}
+			$player->sendMessage($this->getConfig()->get("completed"));
+        		$player->getInventory()->removeItem(item::get($this->getConfig()->get("CrateKey-Item") , 0, 1));
+            		$event->setCancelled(true);
+        	}
+        	else {
+            		$player->sendMessage($this->getConfig()->get("failed"));
+            		$event->setCancelled(true); 
+		}
+    	}
+    	elseif(!$event->isCancelled()) {
+        	$event->setCancelled(false);
+    	}
     }
-}
 }
